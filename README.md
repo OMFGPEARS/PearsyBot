@@ -1,4 +1,6 @@
-SparkleBot
+Pears via SparkleBot
 ==========
 
-A port of Sparkle Turntable Bot for plug.dj. I'm using https://github.com/sharedferret/plugapi as my plugapi dependency while developing this, but atomjack's fork should work as well as long as you fix up package.json before installing it.
+A port of Sparkle Turntable Bot's port of Sparkle's plug.dj version's port of atom jack's plugapi that inclues her own dependency here: https://github.com/sharedferret/plugapi as my plugapi dependency.
+
+DONT USE THIS SERIOUSLY DONT THE CODE IS SO UGLY DONT LOOK AT ME 
