@@ -5,12 +5,9 @@ var config = require('./config.json');
 var lastfm = require('lastfm').LastFmNode;
 var lastfmScrobbler = new lastfm({
     api_key: '91c0b9ad5a1d092070b59b28f5ef26ef',
-    secret : '55a87ac6b3af74e6031ce5ea2c49b5ca',
+    secret : 'XXXXXXX',
     useragent: 'omfgpears'
 });
-
-var trackStream = lastfmScrobbler.stream('omfgpears');
-trackStream.start();
 
 
 var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; // We're not quite sure what this is yet, but the API doesn't work without it. It's possible that a future Plug update will change this, so check back here to see if this has changed, and set appropriately, if it has. You can omit using it if you wish - the value as of writing needs to be 'fe940c', and is hardcoded into the bot in the event it is not specified below.
