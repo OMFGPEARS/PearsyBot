@@ -33,8 +33,6 @@ PlugAPI.getAuth({
         // Set up the room object
         room = data.room;
         console.log('[CONNECTED]');
-        // console.log(data);
-        // console.log('[JOIN] Joined room', room);
         
         room.users.forEach(
             function(user) { addUserToDb(user);
@@ -64,7 +62,6 @@ PlugAPI.getAuth({
         }
         // Add to DB
         addUserToDb(data);
-        
         room.users.push(data);
     })
     
@@ -88,7 +85,7 @@ PlugAPI.getAuth({
     });
     
     bot.on('curateUpdate', function(data) {
-        bot.chat('/me Imagine '+ room.users.filter(function(user) { return user.id == data.id })[0].username + ' just farted a heart');
+        bot.chat('/me '+ room.users.filter(function(user) { return user.id == data.id })[0].username + ' just farted a heart');
         console.log('[SNAG] ' + room.users.filter(function(user) { return user.id == data.id; })[0].username + ' snagged this song');
         
         room.curates[data.id] = true;
@@ -207,5 +204,9 @@ PlugAPI.getAuth({
             //run command
             command.handler(data);
         }
+    }
+    
+    function handleQuotes(data){
+        //haha
     }
 });
