@@ -218,6 +218,5 @@ PlugAPI.getAuth({
     }
         
     function handleQuotes(data){
-            //haha
-        }
-    });
+        //haha
+    }
