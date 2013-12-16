@@ -12,6 +12,6 @@ exports.handler = function(data) {
 	var crns = ['£ ', '$ ', '€ ', 'CAD$ ', '¥ '];
 	var currency = crns[Math.floor(Math.random() * (crns.length))];
 
-	var response = '"Guys I just bought ' + item[Math.floor(Math.random() * (item.length))] + ' for ' + currency + price + '.' + price2 + '"';
+	var response = 'Guys I just bought ' + item[Math.floor(Math.random() * (item.length))] + ' for ' + currency + price + '.' + price2;
     bot.chat(response);
 };
