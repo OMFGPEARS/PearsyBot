@@ -191,7 +191,7 @@ PlugAPI.getAuth({
     
   function handleCommand(data) {
     //var matches = data.message.match(/^(?:pears)\s+(\w+)\s*(.*)/);
-    var matches = data.message.match(/^(?:"pears")\s+(.*)/);
+    var matches = data.message.match(/^(?:pears)\s+(.*)/);
  
     if (matches) {
         var cmmnd = matches[1];
