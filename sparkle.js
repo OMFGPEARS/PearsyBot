@@ -189,22 +189,35 @@ PlugAPI.getAuth({
         db.run('CREATE TABLE IF NOT EXISTS CHAT (id INTEGER PRIMARY KEY AUTOINCREMENT, message VARCHAR(255), userid VARCHAR(255), timestamp TIMESTAMP)');
     }
     
-    function handleCommand(data) {
-        var command = commands.filter(function(cmd) { 
-            var found = false;
-            for (i = 0; i < cmd.names.length; i++) {
-                if (!found) {
-                    found = (cmd.names[i] == data.message.toLowerCase() || (cmd.startsWith && cmd.names[i].indexOf(data.message.toLowerCase()) == 0));
-                }
-            }
-            return found;
-        })[0];
-        
-        if (command && command.enabled) {
-            //run command
-            command.handler(data);
-        }
+  function handleCommand(data) {
+    //var matches = data.message.match(/^(?:pears)\s+(\w+)\s*(.*)/);
+    var matches = data.message.match(/^(?:"pears")\s+(.*)/);
+ 
+    if (matches) {
+        var cmmnd = matches[1];
+        //var args = matches[2];
+        Commander(data, cmmnd); //will check to see if any of the command names match the words after 'pears'
+    } else {
+        Commander(data, data.message); //if data.message doesn't start with 'pears', we'll check data.message string against all command names
     }
+}
+ 
+function Commander(data, cmmnd) {
+    var command = commands.filter(function (cmd) {
+        var found = false;
+        for (i = 0; i < cmd.names.length; i++) {
+            if (!found) {
+                found = (cmd.names[i] == cmmnd.toLowerCase() || (cmd.startsWith && cmd.names[i].indexOf(cmmnd.toLowerCase()) == 0));
+            }
+        }
+        return found;
+    })[0];
+ 
+    if (command && command.enabled) {
+        //run command
+        command.handler(data);
+    }
+}
     
     function handleQuotes(data){
         //haha
