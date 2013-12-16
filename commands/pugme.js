@@ -1,8 +1,6 @@
 // Pugs on demand
 
-var re = /^(?:pears)\s+(\w+)\s*(.*)/;
-
-exports.names = ['pears pugme','.pugme'];
+exports.names = ['pears pugme','.pugme', 'pugme'];
 exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;

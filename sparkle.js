@@ -92,37 +92,37 @@ PlugAPI.getAuth({
     });
     
     bot.on('dj_advance', function(data) {
-        console.log('New song: ', data);
-        
-        // Write previous song data to DB
-        db.run('INSERT OR REPLACE INTO SONGS VALUES (?, ?, ?, ?, ?, ?)', [room.media.id, room.media.title, room.media.format, room.media.author, room.media.cid, room.media.duration]);
-        
-        db.run('INSERT INTO PLAYS (userid, songid, upvotes, downvotes, snags, started, listeners) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?)',
-        [room.currentDJ, 
-        room.media.id, 
-        _.values(room.votes).filter(function(vote) { return vote == 1; }).length, 
-        _.values(room.votes).filter(function(vote) { return vote == -1; }).length, 
-        _.values(room.curates).length, 
-        room.users.length]);
-        
-        // Update room object
-        room.media = data.data.media;
-        room.djs = data.data.djs;
-        room.votes = {};
-        room.mediaStartTime = data.data.mediaStartTime;
-        room.currentDJ = data.data.currentDJ;
-        room.playlistID = data.data.playlistID;
-        room.historyID = data.data.historyID;
-        room.curates = {}; 
-        var session = lastfmScrobbler.session({
-           handlers: {
-              success: function(session) {
-                 lastfm.update('nowplaying', session, { track: room.media.title } );
-                 lastfm.update('scrobble', session, { track: room.media.title, timestamp: new Date.getTime() });
-              }
-           }
-        });
-
+        // console.log('New song: ', data);
+        if((room.media)){ //make sure next dj
+            // Write previous song data to DB
+            db.run('INSERT OR REPLACE INTO SONGS VALUES (?, ?, ?, ?, ?, ?)', [room.media.id, room.media.title, room.media.format, room.media.author, room.media.cid, room.media.duration]);
+            
+            db.run('INSERT INTO PLAYS (userid, songid, upvotes, downvotes, snags, started, listeners) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?)',
+            [room.currentDJ, 
+            room.media.id, 
+            _.values(room.votes).filter(function(vote) { return vote == 1; }).length, 
+            _.values(room.votes).filter(function(vote) { return vote == -1; }).length, 
+            _.values(room.curates).length, 
+            room.users.length]);
+            
+            // Update room object
+            room.media = data.data.media;
+            room.djs = data.data.djs;
+            room.votes = {};
+            room.mediaStartTime = data.data.mediaStartTime;
+            room.currentDJ = data.data.currentDJ;
+            room.playlistID = data.data.playlistID;
+            room.historyID = data.data.historyID;
+            room.curates = {}; 
+                var session = lastfmScrobbler.session({
+                   handlers: {
+                      success: function(session) {
+                         lastfm.update('nowplaying', session, { track: room.media.title } );
+                         lastfm.update('scrobble', session, { track: room.media.title, timestamp: new Date.getTime() });
+                      }
+                   }
+                });
+            }
     });
     
     bot.on('djUpdate', function(data) {
@@ -189,35 +189,35 @@ PlugAPI.getAuth({
         db.run('CREATE TABLE IF NOT EXISTS CHAT (id INTEGER PRIMARY KEY AUTOINCREMENT, message VARCHAR(255), userid VARCHAR(255), timestamp TIMESTAMP)');
     }
     
-  function handleCommand(data) {
-    var matches = data.message.match(/^(?:pears)\s+(.*)/);
-    if (matches) {
-        var cmmnd = matches[1];
-        var args = matches[2];
-        Commander(data, cmmnd); //will check to see if any of the command names match the words after 'pears'
-    } else {
-        Commander(data, data.message); //if data.message doesn't start with 'pears', we'll check data.message string against all command names
-    }
-}
- 
-function Commander(data, cmmnd) {
-    var command = commands.filter(function (cmd) {
-        var found = false;
-        for (i = 0; i < cmd.names.length; i++) {
-            if (!found) {
-                found = (cmd.names[i] == cmmnd.toLowerCase() || (cmd.startsWith && cmd.names[i].indexOf(cmmnd.toLowerCase()) == 0));
-            }
+    function handleCommand(data) {
+        var matches = data.message.match(/^(?:pears)\s+(.*)/);
+        if (matches) {
+            var cmmnd = matches[1];
+            var args = matches[2];
+            Commander(data, cmmnd); //will check to see if any of the command names match the words after 'pears'
+        } else {
+            Commander(data, data.message); //if data.message doesn't start with 'pears', we'll check data.message string against all command names
         }
-        return found;
-    })[0];
+    }
  
-    if (command && command.enabled) {
-        //run command
-        command.handler(data);
+    function Commander(data, cmmnd) {
+        var command = commands.filter(function (cmd) {
+            var found = false;
+            for (i = 0; i < cmd.names.length; i++) {
+                if (!found) {
+                    found = (cmd.names[i] == cmmnd.toLowerCase() || (cmd.startsWith && cmd.names[i].indexOf(cmmnd.toLowerCase()) == 0));
+                }
+            }
+            return found;
+        })[0];
+     
+        if (command && command.enabled) {
+            //run command
+            command.handler(data);
+        }
     }
-}
-    
+        
     function handleQuotes(data){
-        //haha
-    }
-});
+            //haha
+        }
+    });
