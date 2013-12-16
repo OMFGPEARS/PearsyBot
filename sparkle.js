@@ -190,12 +190,12 @@ PlugAPI.getAuth({
     }
     
   function handleCommand(data) {
-    //var matches = data.message.match(/^(?:pears)\s+(\w+)\s*(.*)/);
-    var matches = data.message.match(/^(?:"pears")\s+(.*)/);
- 
+    // var matches = data.message.match(/^(pears)\s+(.+)\s*(.*)/i);
+    var matches = data.message.match(/^(?:pears)\s+(.*)/);
+    console.log(matches);
     if (matches) {
         var cmmnd = matches[1];
-        //var args = matches[2];
+        var args = matches[2];
         Commander(data, cmmnd); //will check to see if any of the command names match the words after 'pears'
     } else {
         Commander(data, data.message); //if data.message doesn't start with 'pears', we'll check data.message string against all command names
