@@ -9,6 +9,6 @@ Also this is my first repo (surprising I know) so I'm sure I did not follow a lo
 
 Stuff to do
 ==========
-1. consolidates quotes into single command with parameter instead of this 829739827489324x module mess
+1. ~~consolidates quotes into single command with parameter instead of this 829739827489324x module mess~~ 
 2. refactor and refactor
 3. eat ice cream :icecream:
