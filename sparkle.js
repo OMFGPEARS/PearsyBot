@@ -6,7 +6,6 @@ var songtimer = null;
 var scribble = require('scribble');
 var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, config.lastfm.username, config.lastfm.password);
 
-
 var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; // We're not quite sure what this is yet, but the API doesn't work without it. It's possible that a future Plug update will change this, so check back here to see if this has changed, and set appropriately, if it has. You can omit using it if you wish - the value as of writing needs to be 'fe940c', and is hardcoded into the bot in the event it is not specified below.
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
@@ -111,6 +110,7 @@ PlugAPI.getAuth({
             room.playlistID = data.data.playlistID;
             room.historyID = data.data.historyID;
             room.curates = {}; 
+
             var length1 = data.media.duration;
             var length2 = Math.floor(length1);
             var thesong = {
@@ -227,8 +227,5 @@ PlugAPI.getAuth({
             command.handler(data);
         }
     }
-        
-    function handleQuotes(data){
-        //haha
-    }
+    
 });
