@@ -215,8 +215,5 @@ PlugAPI.getAuth({
             command.handler(data);
         }
     }
-        
-    function handleQuotes(data){
-        //haha
-    }
+    
 });

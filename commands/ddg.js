@@ -9,37 +9,39 @@ exports.matchStart = true;
 exports.handler = function(data) {
     var prefix = 0;
     var similar = 0;
+    var searchtype = 'define';
     
     if (data.message.indexOf("pears") != -1 && data.message.substring(0) == 'p'){ prefix = 1;}
-    if (data.message.indexOf("similar") != -1){ similar = 1;}
+    if (data.message.indexOf("similar") != -1){ similar = 1; var searchtype = 'similar';}
+    
     
     switch(prefix){
         case 1:
             if (similar == 1){ 
-                var subject = data.message.slice(14);
-            }else{
-                var subject = data.message.slice(13);
-            }
+                var charindex = 14;
+            }else{ var charindex = 13;}
         break;
         case 0:
             if (similar == 1){ 
-                var subject = data.message.slice(8);
-            }else{
-                var subject = data.message.slice(7);
-            }
+                var charindex = 8;
+            }else{ var charindex = 7; }
         break;
         default:
-            var subject = data.message.slice(7);
+            var charindex = 7;
     }
-    console.log(subject);
+    var subject = data.message.slice(charindex);
     ddg.instantAnswer(subject, {skip_disambig: '1'}, function(err, response){
-        if (similar == 1){
-            bot.chat(response.RelatedTopics[0].FirstURL);
-        }else if (response.Definition){
-            bot.chat(response.Definition);
-        }else if (response.AbstractURL != ""){
-            bot.chat(response.AbstractURL);
-        }else{
+        console.log(response);
+        try{
+            switch(searchtype){
+                case 'similar':
+                    bot.chat(response.RelatedTopics[0].FirstURL);
+                case 'define':
+                    bot.chat(response.Definition);
+                default:
+                    bot.chat(response.AbstractURL);
+            }
+        }catch(err){
             bot.chat("Dude I don't know!");
         }
     });
