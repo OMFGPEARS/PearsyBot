@@ -4,5 +4,12 @@
         "twitterPassword": "###",
         "botname": "meow"
     },
+    "lastfm":{
+    	"scrobble": false,
+    	"apikey": "xxxxxx",
+    	"apisecret": "xxxxxx",
+    	"username": "username",
+    	"password": "password"
+    },
     "roomName": "room-name"
 }

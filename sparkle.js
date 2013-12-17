@@ -1,13 +1,10 @@
 var PlugAPI = require('plugapi');
 var fs = require('fs');
 var config = require('./config.json');
+var songtimer = null;
 
-var lastfm = require('lastfm').LastFmNode;
-var lastfmScrobbler = new lastfm({
-    api_key: '91c0b9ad5a1d092070b59b28f5ef26ef',
-    secret : 'XXXXXXX',
-    useragent: 'omfgpears'
-});
+var scribble = require('scribble');
+var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, config.lastfm.username, config.lastfm.password);
 
 
 var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; // We're not quite sure what this is yet, but the API doesn't work without it. It's possible that a future Plug update will change this, so check back here to see if this has changed, and set appropriately, if it has. You can omit using it if you wish - the value as of writing needs to be 'fe940c', and is hardcoded into the bot in the event it is not specified below.
@@ -114,14 +111,29 @@ PlugAPI.getAuth({
             room.playlistID = data.data.playlistID;
             room.historyID = data.data.historyID;
             room.curates = {}; 
-                var session = lastfmScrobbler.session({
-                   handlers: {
-                      success: function(session) {
-                         lastfm.update('nowplaying', session, { track: room.media.title } );
-                         lastfm.update('scrobble', session, { track: room.media.title, timestamp: new Date.getTime() });
-                      }
-                   }
-                });
+            var length1 = data.media.duration;
+            var length2 = Math.floor(length1);
+            var thesong = {
+                artist: data.media.author,
+                track: data.media.title,
+                length: length2
+            };
+
+            if (config.lastfm.scrobble) Scrobbler.NowPlaying(thesong, function (post_return_data) {});
+
+            if (songtimer != null) {
+                    clearTimeout(songtimer);
+                    songtimer = null;
+                }
+
+
+            songtimer = setTimeout(function () {
+                songtimer = null;
+
+                if (config.lastfm.scrobble) Scrobbler.Scrobble(thesong, function (post_return_data) {});
+
+                }, (length2 - 3) * 1000);
+
             }
     });
     
