@@ -3,6 +3,7 @@ exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = true;
 exports.handler = function(data) {
+    console.log(data.message);
 	if (data.message.substring(0, 5).match(/pears/)){
 	  var person = data.message.slice(12);
 	} else {
@@ -10,6 +11,7 @@ exports.handler = function(data) {
 	}
 
     db.get('SELECT quote from QUOTES WHERE speaker="'+person+'" ORDER BY RANDOM() LIMIT 1', function(err, row) {
+        console.log(row);
        if (row) bot.chat(row['quote']);
     })
 };
