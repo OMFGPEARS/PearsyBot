@@ -19,6 +19,7 @@
     "request": "*",
     "sqlite3": "*",
     "string": "*",
+    "node-ermahgerd": "*",
     "underscore": "*"
   },
   "devDependencies": {},
