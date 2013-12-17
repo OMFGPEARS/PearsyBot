@@ -2,14 +2,6 @@ var PlugAPI = require('plugapi');
 var fs = require('fs');
 var config = require('./config.json');
 
-var lastfm = require('lastfm').LastFmNode;
-var lastfmScrobbler = new lastfm({
-    api_key: '91c0b9ad5a1d092070b59b28f5ef26ef',
-    secret : 'XXXXXXX',
-    useragent: 'omfgpears'
-});
-
-
 var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; // We're not quite sure what this is yet, but the API doesn't work without it. It's possible that a future Plug update will change this, so check back here to see if this has changed, and set appropriately, if it has. You can omit using it if you wish - the value as of writing needs to be 'fe940c', and is hardcoded into the bot in the event it is not specified below.
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
@@ -114,14 +106,6 @@ PlugAPI.getAuth({
             room.playlistID = data.data.playlistID;
             room.historyID = data.data.historyID;
             room.curates = {}; 
-                var session = lastfmScrobbler.session({
-                   handlers: {
-                      success: function(session) {
-                         lastfm.update('nowplaying', session, { track: room.media.title } );
-                         lastfm.update('scrobble', session, { track: room.media.title, timestamp: new Date.getTime() });
-                      }
-                   }
-                });
             }
     });
     
