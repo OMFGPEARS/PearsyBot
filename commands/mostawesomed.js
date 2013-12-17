@@ -1,4 +1,4 @@
-exports.names = ['.mostwooted', '.mostawesomed', 'mostawesomed'];
+exports.names = ['.mostwooted', '.mostawesomed', 'mostawesomed', 'most awesomed'];
 exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;
