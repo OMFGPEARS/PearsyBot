@@ -12,6 +12,8 @@ module.exports = function(options) {
     commands = [];
     uptime = new Date();
     
+    bot.usernames = [];
+    
     room = {
         users: [],
         djs: [],
