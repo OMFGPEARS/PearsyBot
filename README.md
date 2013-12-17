@@ -1,4 +1,4 @@
-OMFGPEARS PAGE
+OMFGPEARS.COM
 ==========
 
-The code behind the omfgpears info page: [brianjhong.github.io/SparkleBot/](http://brianjhong.github.io/SparkleBot)
+The code behind [omfgpears.com/](http://omfgpears.com)
