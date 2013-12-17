@@ -10,8 +10,8 @@ exports.handler = function(data) {
     var prefix = 0;
     var similar = 0;
     
-    if (data.message.substring(0, 5).match(/pears/)){ prefix = 1;}
-    if (data.message.substring(8, 12).match(/[ ]*similar/) || data.message.substring(0, 7).match(/similar/) ){ similar = 1;}
+    if (data.message.indexOf("pears") != -1){ prefix = 1;}
+    if (data.message.indexOf("similar") != -1){ similar = 1;}
     
     switch(prefix){
         case 1:
