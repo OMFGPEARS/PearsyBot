@@ -7,10 +7,8 @@ String.prototype.repeat = function(num){
             var include = ids.join(',');
             var parameters = "?, ".repeat(ids.length-1) + "?";
             var statement = 'SELECT userid, username FROM USERS WHERE userid IN (' + parameters + ')';
-            
                 db.all(statement, ids.splice(0, ids.length), function(err,rows){
                     bot.chat('Our staff!: ' + rows.map(function(row){
-                        console.log(row);
                         return row['username'];
                     }).join(', '));
                 });
@@ -28,7 +26,6 @@ exports.handler = function(data) {
                 staffids.push(ids);
             }
         }
-        console.log(staffids);
         getUsernameById(staffids);
         
 };
