@@ -10,7 +10,7 @@ exports.handler = function(data) {
     var prefix = 0;
     var similar = 0;
     
-    if (data.message.indexOf("pears") != -1){ prefix = 1;}
+    if (data.message.indexOf("pears") != -1 && data.message.substring(0) == 'p'){ prefix = 1;}
     if (data.message.indexOf("similar") != -1){ similar = 1;}
     
     switch(prefix){
