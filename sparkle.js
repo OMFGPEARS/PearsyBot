@@ -205,7 +205,7 @@ PlugAPI.getAuth({
             var found = false;
             for (i = 0; i < cmd.names.length; i++) {
                 if (!found) {
-                    found = (cmd.names[i] == cmmnd.toLowerCase() || (cmd.startsWith && cmd.names[i].indexOf(cmmnd.toLowerCase()) == 0));
+                    found = (cmd.names[i] == cmmnd.toLowerCase() || (cmd.matchStart && cmmnd.toLowerCase().indexOf(cmd.names[i]) == 0));
                 }
             }
             return found;
