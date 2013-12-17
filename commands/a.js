@@ -1,6 +1,6 @@
 // Instructs the bot to woot a song. Only available for bouncers and higher.
 
-exports.names = ['.a', '.w', 'pears bop'];
+exports.names = ['.a', '.w', 'bop'];
 exports.hidden = true;
 exports.enabled = true;
 exports.matchStart = false;

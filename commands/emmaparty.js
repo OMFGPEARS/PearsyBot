@@ -1,4 +1,4 @@
-exports.names = ['.emmaparty'];
+exports.names = ['emmaparty'];
 exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;
