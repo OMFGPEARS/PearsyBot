@@ -16,5 +16,5 @@ http://brianjhong.github.io/SparkleBot/
 Stuff to do
 ==========
 1. ~~consolidates quotes into single command with parameter instead of this 829739827489324x module mess~~ 
-2. actually fix lastfm scrobble
+2. ~~actually fix lastfm scrobble~~
 3. eat ice cream :icecream:
