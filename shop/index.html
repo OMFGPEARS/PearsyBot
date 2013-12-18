@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ 
+  <meta charset="UTF-8">
+  <title>Pears Shop</title>
+  <meta http-equiv="x-dns-prefetch-control" content="off">
+  <script type="text/javascript" src="//use.typekit.net/trj7zxd.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <link rel="stylesheet" href="/main.css" />
+</head>
+
+<body>
+  <center>
+    <div id="top">
+      <div id="pears">
+        <p><img src="//i.imgur.com/xYfv1.png" alt="hi i'm pears"></p>
+      </div>
+
+      <div id="main">
+        <p><button type="button" class="button" onclick="shop()">pears shop</button></p>
+
+        <div id="info" class="tk-gooddog-new"></div><script>
+(function(){
+
+        var item = ['a five-pound human fat replica', 'a ROSWELL SOIL SAMPLE', 'DOLLY THE SEXY INFLATABLE SHEEP', 'a magical unicorn mask', 'UNICORN MEAT', 'ENGLISH AS A SECOND F*CKING LANGUAGE, by Sterling Johnson', 'some LIVE LADY BUGS', 'a shower gel dispenser shaped like a nose', 'A FREAKING COOL STEGOSAURUS COSTUME FOR A DOG', 'a bottle of wolf urine', 'A NEAT KITCHEN ART HAM DOGGER', 'an underpants dispenser', 'a rainbow glow in the dark full body unitard', 'URANIUM ORE', 'a political advertisement making software for my PC', 'a pretty dang rare penny', 'RABBIT BROTH', 'a green remote for a laserdisc player', 'EDIBLE CANDLE WAX', 'some dude\'s XBox live account', 'a Club Penguin membership', 'a meat slicer with a detachable blade', 'A GATE FROM AN OLD CAGE AT A ZOO IN OHIO', 'a radish themed water bottle for a hamster', 'a tube of contained headlice'];
+        var price = Math.ceil(Math.random() * 500);
+
+        var price2 = Math.floor((Math.random()*99)+10);
+        var crns = ["&pound; ", "$ ", "&euro; ", "CAD$ ", "&yen; "];
+        var currency = crns[Math.floor(Math.random() * (crns.length))];
+
+        var response = '"Guys I just bought ' + item[Math.floor(Math.random() * (item.length))] + ' for <br /> ' + currency + price+'';
+        if (currency == 'EUR ') {
+            response += ',' + price2 +'"';
+        } else {
+        response += '.'+price2+'"';
+        }
+        info.innerHTML = response;
+
+
+
+        })();
+
+        function shop()
+        {
+
+        var item = ['a five-pound human fat replica', 'a ROSWELL SOIL SAMPLE', 'DOLLY THE SEXY INFLATABLE SHEEP', 'a magical unicorn mask', 'UNICORN MEAT', 'ENGLISH AS A SECOND F*CKING LANGUAGE, by Sterling Johnson', 'some LIVE LADY BUGS', 'a shower gel dispenser shaped like a nose', 'A FREAKING COOL STEGOSAURUS COSTUME FOR A DOG', 'a bottle of wolf urine', 'A NEAT KITCHEN ART HAM DOGGER', 'an underpants dispenser', 'a rainbow glow in the dark full body unitard', 'URANIUM ORE', 'a political advertisement making software for my PC', 'a pretty dang rare penny', 'RABBIT BROTH', 'a green remote for a laserdisc player', 'EDIBLE CANDLE WAX', 'some dude\'s XBox live account', 'a Club Penguin membership', 'a meat slicer with a detachable blade', 'A GATE FROM AN OLD CAGE AT A ZOO IN OHIO', 'a radish themed water bottle for a hamster', 'a tube of contained headlice'];
+        var price = Math.ceil(Math.random() * 500);
+
+        var price2 = Math.floor((Math.random()*99)+10);
+        // var crns = ["� ", "$ ", "? ", "EUR ", "CDN$ "];
+        var crns = ["&pound; ", "$ ", "&euro; ", "CAD$ ", "&yen; "];
+        var currency = crns[Math.floor(Math.random() * (crns.length))];
+
+        var response = '"Guys I just bought ' + item[Math.floor(Math.random() * (item.length))] + ' for <br />' + currency + price+'';
+        if (currency == 'EUR ') {
+            response += ',' + price2 +'"';
+        } else {
+        response += '.'+price2+'"';
+        }
+        document.getElementById("info").innerHTML=(response);
+
+
+
+        }
+
+        </script>
+      </div>
+    </div>
+  </center>
+</body>
+</html>
