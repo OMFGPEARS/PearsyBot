@@ -14,7 +14,6 @@ exports.handler = function(data) {
     if (data.message.indexOf("pears") != -1 && data.message.substring(0) == 'p'){ prefix = 1;}
     if (data.message.indexOf("similar") != -1){ similar = 1; var searchtype = 'similar';}
     
-    
     switch(prefix){
         case 1:
             if (similar == 1){ 
@@ -36,10 +35,13 @@ exports.handler = function(data) {
             switch(searchtype){
                 case 'similar':
                     bot.chat(response.RelatedTopics[0].FirstURL);
+                break;
                 case 'define':
-                    bot.chat(response.Definition);
-                default:
-                    bot.chat(response.AbstractURL);
+                    if (response.Definition != ''){
+                        bot.chat(response.Definition);
+                    }else{
+                        bot.chat(response.AbstractURL);
+                    }
             }
         }catch(err){
             bot.chat("Dude I don't know!");

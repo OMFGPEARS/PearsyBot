@@ -66,7 +66,7 @@ PlugAPI.getAuth({
         //the only data is the user id, needs to pull from the database to get username
         
         var username = _.findWhere(room.users, {id: data.id}).username;
-        bot.chat('A wild @' + username + ' has fled');
+        bot.chat('A wild @' + username + ' has fled!');
         
         // Update DB
         db.run('UPDATE OR IGNORE USERS SET lastSeen = CURRENT_TIMESTAMP WHERE userid = ?', [data.id]);
