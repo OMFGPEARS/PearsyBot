@@ -11,7 +11,7 @@ where this bot hangs out:
 http://plug.dj/tt854/
 
 where this bot's incomplete info page is:
-http://brianjhong.github.io/SparkleBot/
+http://omfgpears.com
 
 Stuff to do
 ==========
