@@ -1,6 +1,6 @@
 // LETS SHOP FOR SHIT
 
-exports.names = ['pears shop', '.shop'];
+exports.names = ['pears shop', '.shop', 'shop'];
 exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;
