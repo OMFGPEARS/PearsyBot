@@ -12,7 +12,14 @@ exports.handler = function(data) {
                 var t2 = (2 * t0) - t1;
                 return new Date(t2).toString();
             })(utc_string);
-            bot.chat('I heard this song last ' + local_string + ' by ' + row['username'] + ' and it got ' + row['upvotes'] + ' woot and ' + row['downvotes'] + ' meh).');
+            var upvotes = 'woot';
+            var downvotes = 'meh';
+            if ( row['upvotes'] != 1 ){
+                var upvotes = 'woots';
+            }if ( row['downvotes'] != 1 ){
+                var downvotes = 'mehs';
+            }
+            bot.chat('I heard this song last ' + local_string + ' by ' + row['username'] + ' and it got ' + row['upvotes'] + ' ' + upvotes + ' and ' + row['downvotes'] + ' '+downvotes +').');
         } else {
             bot.chat('This is the first time this song has been played in here.');
         }
