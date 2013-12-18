@@ -54,7 +54,7 @@ background-image: -webkit-radial-gradient(center, circle farthest-side, #CFFF61 
 background-image: radial-gradient(circle farthest-side at center, #CFFF61 0%, #718C38 100%);
 }
 #nav-contain{
-    background:#111 url(http://thompsn.com/rerltherns/rt_bar.png);
+    background:#111 url(img/nav.png);
          top: 0px;
        position: fixed;
  width:100%;
