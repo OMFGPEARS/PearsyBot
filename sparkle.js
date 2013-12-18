@@ -111,11 +111,11 @@ PlugAPI.getAuth({
             room.historyID = data.data.historyID;
             room.curates = {}; 
 
-            var length1 = data.media.duration;
+            var length1 = room.media.duration;
             var length2 = Math.floor(length1);
             var thesong = {
-                artist: data.media.author,
-                track: data.media.title,
+                artist: room.media.author,
+                track: room.media.title,
                 length: length2
             };
 
