@@ -8,6 +8,7 @@ exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;
 exports.handler = function(data) {
+    if (
     var artist = room.media.author;
     request('http://developer.echonest.com/api/v4/artist/similar?api_key='+config.echonest.api_key + '&name=' + htmlEntities(room.media.author) + '&results=5', function cbfunc(error, response, body) {
             console.log(error);
