@@ -15,8 +15,6 @@ exports.handler = function(data) {
     if (data.message.indexOf('getuserprofile') != -1){
         id = data.message.substring(15);
         //meh not interesting right now
-        console.log(id);
-        console.log(bot.getUser(id));
     }else{
         id = data.message.substring(10);
         getUsernameById(id);

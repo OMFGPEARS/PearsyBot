@@ -3,7 +3,7 @@
 // around plug's chat size limit
 
 exports.names = ['commands'];
-exports.hidden = false;
+exports.hidden = true;
 exports.enabled = true;
 exports.matchStart = false;
 exports.handler = function(data) {

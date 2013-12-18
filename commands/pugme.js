@@ -1,6 +1,6 @@
 // Pugs on demand
 
-exports.names = ['pears pugme','.pugme', 'pugme'];
+exports.names = ['.pugme', 'pugme', 'pears pugme'];
 exports.hidden = false;
 exports.enabled = true;
 exports.matchStart = false;

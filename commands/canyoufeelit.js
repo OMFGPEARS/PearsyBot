@@ -1,7 +1,7 @@
 // reptar!
 
 exports.names = ['can you feel it!?'];
-exports.hidden = false;
+exports.hidden = true;
 exports.enabled = true;
 exports.matchStart = false;
 exports.handler = function(data) {

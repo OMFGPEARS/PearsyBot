@@ -1,6 +1,6 @@
 
-exports.names = ['pears sadboyzz', 'pears sadboyzzz', 'what are you doing later?', 'what are you doin later?', 'wht r u doin later', 'what are you doing this weekend?', 'wht r u doing this weekend', 'what are you doing this weekend', 'what are you doing', 'what are you doin'];
-exports.hidden = false;
+exports.names = ['sadboyzz', 'pears sadboyzz', 'pears sadboyzzz', 'what are you doing later?', 'what are you doin later?', 'wht r u doin later', 'what are you doing this weekend?', 'wht r u doing this weekend', 'what are you doing this weekend', 'what are you doing', 'what are you doin'];
+exports.hidden = true;
 exports.enabled = true;
 exports.matchStart = false;
 exports.handler = function(data) {
