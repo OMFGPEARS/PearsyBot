@@ -24,7 +24,7 @@ function chatcallback(data) {
 
 function Commander(data, infos) {
     var cmmnd = infos.cmmnd;
-    var args = info.args;
+    var args = infos.args;
     var person = data.fromID;
     var role = API.ROLE.BOUNCER;
     if (cmmnd == 'bg') {
