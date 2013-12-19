@@ -32,16 +32,14 @@ function chatcallback(data) {
 }
 
 function commandcallback(value) {
-
   if (value == '/autowoot'){
-  wooting = true;
-  API.chatLog('Autowooting has been activated, dawg.',false);
-  wootSong();
+      wooting = true;
+      API.chatLog('Autowooting has been activated, dawg.',false);
+      wootSong();
   } else if (value == '/kill autowoot') {
-  wooting = false;
-  API.chatLog('Autowoot off. Ok? Ok.',false);
+      wooting = false;
+      API.chatLog('Autowoot off. Ok? Ok.',false);
   }
-
 }
 
 function DJ_ADVANCE_LISTENER(obj) {
@@ -68,7 +66,4 @@ function initAPIListeners() {
     API.on(API.CHAT_COMMAND, commandcallback);
 
 }
-
-
-
 
