@@ -29,31 +29,25 @@ function Commander(data, infos) {
     var args = infos.args;
     var person = data.fromID;
     var role = API.ROLE.BOUNCER;
+    var commands = {};
+    
+    function getCommands(callback){
+        $.ajax({
+            dataType: "jsonp",
+            url: "//spreadsheets.google.com/feeds/list/0AgUer4XUnq3jdEJhbkZSaFcwVnM1NzdqSFlxaEZPcUE/od6/public/values?alt=json-in-script", 
+            success: callback
+        });
+    }
+    getCommands(function (data){
+            for (var command in data.feed.entry){
+                this.commands[data.feed.entry[command].gsx$command.$t] = data.feed.entry[command].gsx$link.$t;
+            }
+    });
+    
     if (cmmnd == 'bg') {
         var check = API.hasPermission(person, role);
         if (check) {
-
-            if (args == 'christmas1') {
-                changebg('http://i.imgur.com/2Q89Rn2.png');
-            } else if (args == 'christmas2') {
-                changebg('http://i.imgur.com/P4GVhF4.png')
-
-            } else if (args == 'christmas3') {
-                changebg('http://i.imgur.com/M0CeHah.png');
-
-            } else if (args == 'christmas3') {
-                changebg('http://i.imgur.com/M0CeHah.png');
-
-            } else if (args == 'redwall') {
-                changebg('http://i.imgur.com/u36VR4n.png');
-
-            } else if (args == 'riptt') {
-                changebg('http://i.imgur.com/GZKgCpk.png');
-
-            } else if (args == 'space') {
-                changebg('http://i.imgur.com/xTQJCDf.jpg');
-
-            }
+            changebg(this.commands[args]);
         }
 
     } else if (cmmnd == 'screen') {
