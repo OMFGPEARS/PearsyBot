@@ -18,30 +18,30 @@ function Commander(data, cmmnd) {
     var role = API.ROLE.BOUNCER;
     var check = API.hasPermission(person,role);
 if (check){
-    if (data.message == '.christmas1') {
+    if (cmmnd == '.christmas1') {
        changebg('http://i.imgur.com/2Q89Rn2.png');
-    } else if (data.message == '.christmas2') {
+    } else if (cmmnd == '.christmas2') {
        changebg('http://i.imgur.com/P4GVhF4.png')
 
-    } else if (data.message == '.christmas3') {
+    } else if (cmmnd == '.christmas3') {
         changebg('http://i.imgur.com/M0CeHah.png');
 
-    } else if (data.message == '.christmas3') {
+    } else if (cmmnd == '.christmas3') {
         changebg('http://i.imgur.com/M0CeHah.png');
 
-    } else if (data.message == '.redwall'){
+    } else if (cmmnd == '.redwall'){
       changebg('http://i.imgur.com/u36VR4n.png');
 
-    } else if (data.message == '.riptt'){
+    } else if (cmmnd == '.riptt'){
       changebg('http://i.imgur.com/GZKgCpk.png');
 
-    } else if (data.message == '.space'){
+    } else if (cmmnd == '.space'){
       changebg('http://i.imgur.com/xTQJCDf.jpg');
 
-    } else if (data.message == '.hide screen') {
+    } else if (cmmnd == '.hide screen') {
             $('#playback').css('opacity', 0);
 
-    } else if (data.message == '.show screen') {
+    } else if (cmmnd == '.show screen') {
              $('#playback').css('opacity', 100);
     }
   }
