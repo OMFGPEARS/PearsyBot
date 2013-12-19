@@ -18,6 +18,15 @@ function chatcallback(data) {
     } else if (data.message == '.christmas3') {
         changebg('http://i.imgur.com/M0CeHah.png');
 
+    } else if (data.message == '.redwall'){
+      changebg('http://i.imgur.com/u36VR4n.png');
+
+    } else if (data.message == '.riptt'){
+      changebg('http://i.imgur.com/GZKgCpk.png');
+
+    } else if (data.message == '.space'){
+      changebg('http://static.tumblr.com/idz8dn2/DnKmgj433/anigif.gif');
+
     } else if (data.message == '.hide screen') {
             $('#playback').css('opacity', 0);
 
