@@ -25,7 +25,11 @@ var availableTags = [
       "Scala",
       "Scheme"
     ];
-jQuery('#chat-input-field').autocomplete({source: availableTags });
+jQuery('#chat-input-field').autocomplete({
+        source: availableTags, 
+        appendTo: '#chat-mention-suggestion',
+        autoFocus:true
+    });
 
 function chatcallback(data) {
     var person = data.fromID;
