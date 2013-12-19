@@ -1,5 +1,6 @@
 initAPIListeners();
 var wooting = false;
+API.chatLog('tt854 bookmarklet loaded. hi hi. look how red this message is.',true);
 
 $('#chat-input-field').autocomplete({source: 'hi'});
 $('body').append("<style>.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; } .autocomplete-selected { background: #f0f0f0; } .autocomplete-suggestions strong { font-weight: normal; color: #3399ff;}</style>");
@@ -56,6 +57,7 @@ function wootSong() {
 function changebg(url) {
   $('#playback .background').hide();
   $('#playback-container').css('border', '2px solid #4D4D4D');
+  $('#playback-container').css('background-image', 'url(http://i.imgur.com/wBs0unz.gif)');
   $('body').css('background-image', 'url('+url+')');
    
 }
@@ -64,4 +66,6 @@ function initAPIListeners() {
     API.on(API.CHAT, chatcallback);
     API.on(API.DJ_ADVANCE, DJ_ADVANCE_LISTENER);
     API.on(API.CHAT_COMMAND, commandcallback);
+
 }
+
