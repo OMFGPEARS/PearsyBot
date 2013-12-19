@@ -25,7 +25,7 @@ function chatcallback(data) {
       changebg('http://i.imgur.com/GZKgCpk.png');
 
     } else if (data.message == '.space'){
-      changebg('http://static.tumblr.com/idz8dn2/DnKmgj433/anigif.gif');
+      changebg('http://i.imgur.com/xTQJCDf.jpg');
 
     } else if (data.message == '.hide screen') {
             $('#playback').css('opacity', 0);
