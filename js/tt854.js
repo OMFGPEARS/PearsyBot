@@ -1,32 +1,6 @@
 initAPIListeners();
 var wooting = false;
 API.chatLog('tt854 bookmarklet loaded. hi hi. look how red this message is.',true);
-var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-jQuery('#chat-input-field').autocomplete({source: availableTags });
-jQuery('body').append("<style>.ui-helper-hidden-accessible{display:none;}.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; } .autocomplete-selected { background: #f0f0f0; } .autocomplete-suggestions strong { font-weight: normal; color: #3399ff;}</style>");
 
 function chatcallback(data) {
     var person = data.fromID;
