@@ -11,7 +11,7 @@ exports.handler = function(data) {
             bot.chat('You haven\'t played any songs in this room!');
         } else {
             db.get('SELECT count(*) as total, sum(upvotes) as up, avg(upvotes) as avg_up, sum(downvotes) as down, avg(downvotes) as avg_down FROM PLAYS WHERE userid = ?', [data.fromID], function(error, row) {
-                bot.chat(data.from + ', you have played ' + row['total'] + ' songs in this room with a total of ' + row['up'] + ' woots and ' + row['down'] + ' mehs (avg +' + row['avg_up'].toFixed(1) + '/-' + row['avg_down'].toFixed(1) + ') (Rank: ' + rank + '/' + rows.length + ')');
+                bot.chat(data.from + ', you have played ' + row['total'] + ' songs in this room with a total of ' + row['up'] + ' woots and ' + row['down'] + ' mehs ( with an average of ' + row['avg_up'].toFixed(1) + ' upvotes and ' + row['avg_down'].toFixed(1) + ' downvotes) (Rank: ' + rank + '/' + rows.length + ')');
             });
         }
     });

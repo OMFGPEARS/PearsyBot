@@ -8,8 +8,8 @@ exports.handler = function(data) {
             + row['unique_songs'] + ' unique) have been played by '
             + row['total_djs'] + ' DJs with a total of '
             + row['upvotes'] + ' woots and '
-            + row['downvotes'] + ' mehs (avg +'
-            + new Number(row['avg_upvotes']).toFixed(1) + '/-'
-            + new Number(row['avg_downvotes']).toFixed(1) + ').');
+            + row['downvotes'] + ' mehs (an average of '
+            + new Number(row['avg_upvotes']).toFixed(1) + ' upvotes and '
+            + new Number(row['avg_downvotes']).toFixed(1) + ' downvotes).');
     });
 };
