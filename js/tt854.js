@@ -3,9 +3,7 @@ var wooting = false;
 API.chatLog('tt854 bookmarklet loaded. hi hi. look how red this message is.',true);
 
 function chatcallback(data) {
-    var person = data.fromID;
-    var role = API.ROLE.BOUNCER;
-    var check = API.hasPermission(person,role);
+
      var matches = data.message.match(/^(?:pears)\s+(.*)/);
      if (matches) {
         var cmmnd = matches[1];
@@ -16,6 +14,9 @@ function chatcallback(data) {
 
 }
 function Commander(data, cmmnd) {
+    var person = data.fromID;
+    var role = API.ROLE.BOUNCER;
+    var check = API.hasPermission(person,role);
 if (check){
     if (data.message == '.christmas1') {
        changebg('http://i.imgur.com/2Q89Rn2.png');
