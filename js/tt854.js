@@ -1,6 +1,8 @@
 initAPIListeners();
 var wooting = false;
 
+$('#chat-input-field').autocomplete({source: 'hi'});
+$('body').append("<style>.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; } .autocomplete-selected { background: #f0f0f0; } .autocomplete-suggestions strong { font-weight: normal; color: #3399ff;}</style>");
 
 function chatcallback(data) {
     var person = data.fromID;
