@@ -40,14 +40,14 @@ function Commander(data, infos) {
     }
     getCommands(function (data){
             for (var command in data.feed.entry){
-                this.commands[data.feed.entry[command].gsx$command.$t] = data.feed.entry[command].gsx$link.$t;
+                Commander.commands[data.feed.entry[command].gsx$command.$t] = data.feed.entry[command].gsx$link.$t;
             }
     });
     
     if (cmmnd == 'bg') {
         var check = API.hasPermission(person, role);
         if (check) {
-            changebg(this.commands[args]);
+            changebg(Commander.commands[args]);
         }
 
     } else if (cmmnd == 'screen') {
