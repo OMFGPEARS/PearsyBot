@@ -1,6 +1,8 @@
 initAPIListeners();
 var wooting = false;
-API.chatLog('tt854 bookmarklet loaded. hi hi. look how red this message is.', true);
+var screenmoving = false;
+API.chatLog('tt854 bookmarklet loaded. hello.', false);
+changebg('http://i.imgur.com/u36VR4n.png');
 
 function chatcallback(data) {
 
@@ -56,12 +58,27 @@ function Commander(data, infos) {
 
     } else if (cmmnd == 'screen') {
         var check = API.hasPermission(person, role);
-        if (check) {
-            if (args == 'hide') {
-                $('#playback').css('opacity', 0);
+        if (check && !screenmoving) {
+            if (args == 'hide' || args == 'up') {
+                screenmoving = true;
+                $('#playback').animate({
+                    height: '0px'
+                }, 4000);
+                setTimeout(function () {
+                    $('#playback').css('opacity', 0);
+                    screenmoving = false;
+                }, 4000);
 
-            } else if (args == 'show') {
+            } else if (args == 'show' || args == 'down') {
+                screenmoving = true;
+                $('#playback').css('height', '0px');
                 $('#playback').css('opacity', 100);
+                $('#playback').animate({
+                    height: '400px'
+                }, 4000);
+                setTimeout(function () {
+                    screenmoving = false;
+                }, 4000);
             }
         }
     }
