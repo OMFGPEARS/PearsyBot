@@ -2,3 +2,7 @@ config.json
 node_modules/
 *.log
 *.sqlite
+sparkle.js
+package.json
+context.js
+config.sample.json
