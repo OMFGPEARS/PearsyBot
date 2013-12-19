@@ -3,7 +3,10 @@ var wooting = false;
 
 
 function chatcallback(data) {
-
+    var person = data.fromID;
+    var role = API.ROLE.BOUNCER;
+    var check = API.hasPermission(person,role);
+    if (check){
     if (data.message == '.christmas1') {
        changebg('http://i.imgur.com/2Q89Rn2.png');
     } else if (data.message == '.christmas2') {
@@ -11,7 +14,19 @@ function chatcallback(data) {
 
     } else if (data.message == '.christmas3') {
         changebg('http://i.imgur.com/M0CeHah.png');
+
+    } else if (data.message == '.christmas3') {
+        changebg('http://i.imgur.com/M0CeHah.png');
+
+    } else if (data.message == '.hide screen') {
+            $('#playback').css('opacity', 0);
+
+    } else if (data.message == '.show screen') {
+             $('#playback').css('opacity', 100);
     }
+  }
+
+
 
 }
 
