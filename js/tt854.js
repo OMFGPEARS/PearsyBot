@@ -6,7 +6,17 @@ function chatcallback(data) {
     var person = data.fromID;
     var role = API.ROLE.BOUNCER;
     var check = API.hasPermission(person,role);
-    if (check){
+     var matches = data.message.match(/^(?:pears)\s+(.*)/);
+     if (matches) {
+        var cmmnd = matches[1];
+        Commander(data, cmmnd); 
+     } else {
+        Commander(data, data.message);
+     }
+
+}
+function Commander(data, cmmnd) {
+if (check){
     if (data.message == '.christmas1') {
        changebg('http://i.imgur.com/2Q89Rn2.png');
     } else if (data.message == '.christmas2') {
@@ -34,10 +44,7 @@ function chatcallback(data) {
              $('#playback').css('opacity', 100);
     }
   }
-
-
-
-}
+  }
 
 function commandcallback(value) {
   if (value == '/autowoot'){
