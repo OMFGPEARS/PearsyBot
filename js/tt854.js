@@ -16,6 +16,7 @@
 */
 
 var TT854 = {
+    version: 0.9,
     wooting : false,
     screenmoving : false,
     commands : {},
@@ -56,8 +57,6 @@ var TT854 = {
         var person_id = data.fromID;
         var check = TT854.roleCheck(person_id, API.ROLE.BOUNCER);
         var chat_command = data.message.match(/(\w+)\s*(.*)/);
-        // console.log(chat_command);
-        // console.log(data);
         var chat_data = {
             cmmnd: chat_command[1],
             args: chat_command[2]
@@ -94,7 +93,6 @@ var TT854 = {
 
     wootSong : function() {
         $("#woot").click();
-        console.log('wooted');
     },
     
     getCommands : function (){
