@@ -34,6 +34,24 @@ var TT854 = {
         }else{return false;}
     },
     
+    screenAnimate: function(params){
+        //no options yet
+        var options = {
+            'up' : 'show',
+            'down' : 'hide'
+        }
+        
+        if (params == ['up']){
+            var height = 0; var opacity = 0;
+        }else{ var height = '281px'; var opacity = 100;}
+        
+        $('#playback-container iframe').animate({
+            'height': height,
+            'opacity' : opacity
+        }, 4000);
+        
+    },
+    
     chatcallback : function(data) {
         var person_id = data.fromID;
         var check = TT854.roleCheck(person_id, API.ROLE.BOUNCER);
@@ -44,44 +62,20 @@ var TT854 = {
             cmmnd: chat_command[1],
             args: chat_command[2]
         }
-        var args = chat_data[2];
         
         if (check) {
             TT854.changebg(TT854.commands[chat_data.args]);
+            if (chat_data.cmmnd == 'screen'){
+                TT854.screenAnimate(chat_data.args);
+            }
         }
-        // } else if (cmmnd == 'screen') {
-            // if (this.check && !this.screenmoving) {
-                // if (args == 'hide' || args == 'up') {
-                    // this.screenmoving = true;
-                    // $('#playback').animate({
-                        // height: '0px'
-                    // }, 4000);
-                    // setTimeout(function () {
-                        // $('#playback').css('opacity', 0);
-                        // this.screenmoving = false;
-                    // }, 4000);
-
-                // } else if (args == 'show' || args == 'down') {
-                    // this.screenmoving = true;
-                    // $('#playback').css('height', '0px');
-                    // $('#playback').css('opacity', 100);
-                    // $('#playback').animate({
-                        // height: '400px'
-                    // }, 4000);
-                    // setTimeout(function () {
-                        // this.screenmoving = false;
-                    // }, 4000);
-                // }
-            // }
-        // }
-
     },
     
     commandcallback : function(value) {
         if (value == '/autowoot') {
             this.wooting = true;
             API.chatLog('Autowooting has been activated, dawg.', false);
-            this.wootSong();
+            TT854.wootSong();
         } else if (value == '/kill autowoot') {
             this.wooting = false;
             API.chatLog('Autowoot off. Ok? Ok.', false);
