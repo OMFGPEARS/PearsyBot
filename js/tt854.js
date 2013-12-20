@@ -46,7 +46,7 @@ var TT854 = {
             var height = 0; var opacity = 0;
         }else{ var height = '281px'; var opacity = 100;}
         
-        $('#playback-container iframe').animate({
+        $('#playback').animate({
             'height': height,
             'opacity' : opacity
         }, 4000);
