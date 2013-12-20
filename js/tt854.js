@@ -64,9 +64,15 @@ var TT854 = {
         }
         
         if (check) {
-            TT854.changebg(TT854.commands[chat_data.args]);
-            if (chat_data.cmmnd == 'screen'){
-                TT854.screenAnimate(chat_data.args);
+            switch(chat_data.cmmnd){
+                case 'screen':
+                    TT854.screenAnimate(chat_data.args);
+                break;
+                case 'bg':
+                    TT854.changebg(TT854.commands[chat_data.args]);
+                break;
+                default:
+                //don't do anything
             }
         }
     },
