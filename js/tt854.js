@@ -113,11 +113,14 @@ var TT854 = {
     
     changebg : function(url) {
         $('#playback .background').hide();
-        $('#playback-container').css('border', '2px solid #4D4D4D');
-        $('#playback-container').css('background-image', 'url(http://i.imgur.com/wBs0unz.gif)');
+        $('#playback-container').css({
+            'border': '2px solid #4D4D4D',
+            'background-image': 'url(http://i.imgur.com/wBs0unz.gif)'
+        });
         $('body').css('background-image', 'url(' + url + ')');
     }
 }
+
 TT854.init();
 
 function initAPIListeners() {
