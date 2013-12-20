@@ -25,8 +25,16 @@ PlugAPI.getAuth({
     bot.on('roomRegister', function(data){
         bot.chat('A wild @' + data.user.profile.username + ' has appeared!');
     });
+    
+    bot.on('friendJoin', function(data){
+        console.log(data);
+    });
+    bot.on('fanJoin', function(data){
+        console.log(data);
+    });
     bot.on('roomJoin', function(data) {    
         // Set up the room object
+        // console.log(data);
         room = data.room;
         console.log('[CONNECTED]');
         
