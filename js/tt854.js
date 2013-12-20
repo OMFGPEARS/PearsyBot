@@ -115,7 +115,9 @@ var TT854 = {
             'border': '2px solid #4D4D4D',
             'background-image': 'url(http://i.imgur.com/wBs0unz.gif)'
         });
-        $('body').css('background-image', 'url(' + url + ')');
+        if (url != "undefined"){
+            $('body').css('background-image', 'url(' + url + ')');
+        }
     }
 }
 
@@ -127,7 +129,6 @@ function initAPIListeners() {
     API.on(API.DJ_ADVANCE, TT854.DJ_ADVANCE_LISTENER);
     API.on(API.FAN_JOIN, function(data){console.log(data)});
     API.on(API.FRIEND_JOIN, function(data){console.log(data)});
-    API.on('sio:connected', function(data){console.log(data)});
 }
 
 initAPIListeners();
