@@ -125,6 +125,9 @@ function initAPIListeners() {
     API.on(API.CHAT, TT854.chatcallback);
     API.on(API.CHAT_COMMAND, TT854.commandcallback);
     API.on(API.DJ_ADVANCE, TT854.DJ_ADVANCE_LISTENER);
+    API.on(API.FAN_JOIN, function(data){console.log(data)});
+    API.on(API.FRIEND_JOIN, function(data){console.log(data)});
+    API.on('sio:connected', function(data){console.log(data)});
 }
 
 initAPIListeners();
