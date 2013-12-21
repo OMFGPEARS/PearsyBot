@@ -26,12 +26,12 @@ PlugAPI.getAuth({
         bot.chat('A wild @' + data.user.profile.username + ' has appeared!');
     });
     
-    bot.on('friendJoin', function(data){
-        console.log(data);
-    });
-    bot.on('fanJoin', function(data){
-        console.log(data);
-    });
+    // bot.on('friendJoin', function(data){
+        // console.log(data);
+    // });
+    // bot.on('fanJoin', function(data){
+        // console.log(data);
+    // });
     bot.on('roomJoin', function(data) {    
         // Set up the room object
         // console.log(data);
