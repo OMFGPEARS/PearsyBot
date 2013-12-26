@@ -18,7 +18,12 @@ a {
 a:hover {
   color: #47A9CC;
 }
-
+.pear{
+  background: transparent url(img/pear.png);
+  display:inline-block;
+  width:14px;
+  height:14px;
+}
 .navright {
   float: right;
 }
