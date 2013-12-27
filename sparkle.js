@@ -6,7 +6,18 @@ var songtimer = null;
 var scribble = require('scribble');
 var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, config.lastfm.username, config.lastfm.password);
 
-var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; // We're not quite sure what this is yet, but the API doesn't work without it. It's possible that a future Plug update will change this, so check back here to see if this has changed, and set appropriately, if it has. You can omit using it if you wish - the value as of writing needs to be 'fe940c', and is hardcoded into the bot in the event it is not specified below.
+PlugAPI.getUpdateCode(auth, config.roomName, function(err, updateCode) {
+       runBot(err, auth, updateCode);
+    });
+});
+    
+function runBot(error, auth, updateCode) {
+    if(error) {
+        console.log("An error occurred: " + err);
+        return;
+    } 
+    
+     initializeModules(auth, updateCode);
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
@@ -17,8 +28,6 @@ PlugAPI.getAuth({
         console.log("An error occurred: " + err);
         return;
     }
-    
-    initializeModules();
     
     bot.connect(config.roomName);
 
@@ -179,14 +188,18 @@ PlugAPI.getAuth({
         user.avatarID]);
     }
     
-    function initializeModules() {
+    function initializeModules(auth, updateCode) {
         // load context
-        require('./context.js')({auth: auth, updateCode: UPDATECODE, config: config});
+        require(path.resolve(__dirname, 'context.js'))({auth: auth, updateCode: updateCode, config: config});
+        
+        // Allow bot to perform multi-line chat
+        bot.multiLine = true;
+        bot.multiLineLimit = 3;
         
         // Load commands
         try {
-            fs.readdirSync('./commands').forEach(function(file) {
-                var command = require('./commands/' + file);
+            fs.readdirSync(path.resolve(__dirname, 'commands')).forEach(function(file) {
+                var command = require(path.resolve(__dirname, 'commands/' + file));
                 commands.push({names: command.names,
                     handler: command.handler,
                     hidden: command.hidden,
