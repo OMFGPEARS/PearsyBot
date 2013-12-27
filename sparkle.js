@@ -5,29 +5,29 @@ var songtimer = null;
 
 var scribble = require('scribble');
 var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, config.lastfm.username, config.lastfm.password);
+    
 
-PlugAPI.getUpdateCode(auth, config.roomName, function(err, updateCode) {
-       runBot(err, auth, updateCode);
+    // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
+    PlugAPI.getAuth({
+        username: config.botinfo.twitterUsername,
+        password: config.botinfo.twitterPassword
+    }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
+        if(err) {
+            console.log("An error occurred: " + err);
+            return;
+        }
+            PlugAPI.getUpdateCode(auth, config.roomName, function(err, updateCode) {
+           runBot(err, auth, updateCode);
+        });
     });
-});
     
-function runBot(error, auth, updateCode) {
-    if(error) {
-        console.log("An error occurred: " + err);
-        return;
-    } 
+    function runBot(error, auth, updateCode) {
+        if(error) {
+            console.log("An error occurred: " + err);
+            return;
+        } 
     
-     initializeModules(auth, updateCode);
-
-// Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
-PlugAPI.getAuth({
-    username: config.botinfo.twitterUsername,
-    password: config.botinfo.twitterPassword
-}, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
-    if(err) {
-        console.log("An error occurred: " + err);
-        return;
-    }
+    initializeModules(auth, updateCode);
     
     bot.connect(config.roomName);
 
@@ -35,12 +35,6 @@ PlugAPI.getAuth({
         bot.chat('A wild @' + data.user.profile.username + ' has appeared!');
     });
     
-    // bot.on('friendJoin', function(data){
-        // console.log(data);
-    // });
-    // bot.on('fanJoin', function(data){
-        // console.log(data);
-    // });
     bot.on('roomJoin', function(data) {    
         // Set up the room object
         // console.log(data);
@@ -273,6 +267,5 @@ PlugAPI.getAuth({
                  }
              }
          }, 15000);
-     }
-    
-});
+    }
+}
