@@ -252,27 +252,27 @@ PlugAPI.getAuth({
     }
     
       // Hack to make sure bot stays connected to plug
- +    // Every 15 seconds, check how much time has elapsed since the most recent RPC message.
- +    // If a song is playing and more than 15 seconds has passed since the expected end
- +    // of the song, stop the bot. If no song is playing and more than 30 minutes have passed
- +    // since an RPC event, stop the bot.
- +    if (config.stopBotOnConnectionLoss) {
- +        setInterval(function() {
- +            if (room.media != null) {
- +                console.log('checking ' + (new Date().getTime() - lastRpcMessage.getTime()) + ' < '
- +                    + ((room.media.duration * 1000) + 15000));
- +                if (new Date().getTime() - lastRpcMessage.getTime() > 15000 + (room.media.duration * 1000)) {
- +                    console.log('Suspected connection loss at ' + new Date());
- +                    process.exit(1);
- +                }
- +            } else {
- +                if (new Date().getTime() - lastRpcMessage > 1800000) {
- +                    console.log('Suspected connection loss at ' + new Date());
- +                    console.log('No song playing.');
- +                    process.exit(1);
- +                }
- +            }
- +        }, 15000);
- +    }
+     // Every 15 seconds, check how much time has elapsed since the most recent RPC message.
+     // If a song is playing and more than 15 seconds has passed since the expected end
+     // of the song, stop the bot. If no song is playing and more than 30 minutes have passed
+    // since an RPC event, stop the bot.
+    if (config.stopBotOnConnectionLoss) {
+        setInterval(function() {
+            if (room.media != null) {
+                console.log('checking ' + (new Date().getTime() - lastRpcMessage.getTime()) + ' < '
+                     + ((room.media.duration * 1000) + 15000));
+                 if (new Date().getTime() - lastRpcMessage.getTime() > 15000 + (room.media.duration * 1000)) {
+                     console.log('Suspected connection loss at ' + new Date());
+                     process.exit(1);
+                 }
+            } else {
+                if (new Date().getTime() - lastRpcMessage > 1800000) {
+                     console.log('Suspected connection loss at ' + new Date());
+                     console.log('No song playing.');
+                     process.exit(1);
+                 }
+             }
+         }, 15000);
+     }
     
 });
