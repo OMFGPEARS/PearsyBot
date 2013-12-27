@@ -2,6 +2,7 @@ var PlugAPI = require('plugapi');
 var fs = require('fs');
 var config = require('./config.json');
 var songtimer = null;
+path = require('path')
 
 var scribble = require('scribble');
 var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, config.lastfm.username, config.lastfm.password);
