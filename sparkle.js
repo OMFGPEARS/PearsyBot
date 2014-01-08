@@ -54,7 +54,7 @@ var Scrobbler = new scribble(config.lastfm.apikey, config.lastfm.apisecret, conf
     bot.on('chat', function(data) {
         console.log('[CHAT] ' + data.from + ': ' + data.message);
         lastRpcMessage = new Date();
-        if (data.data.fromID !== '52a1208496fba535c1318a48') handleCommand(data);
+        if (data.fromID !== '52a1208496fba535c1318a48') handleCommand(data);
     });
     
     bot.on('emote', function(data) {
